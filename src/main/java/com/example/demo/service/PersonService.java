@@ -17,7 +17,7 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public void createPerson(Person person){
+    public void addPerson(Person person){
         personRepository.save(person);
     }
 
