@@ -1,9 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.*;
+import com.example.demo.entity.restaurant.Feedback;
+import com.example.demo.entity.restaurant.Menu;
+import com.example.demo.entity.restaurant.Order9;
+import com.example.demo.entity.restaurant.Restaurant;
 import com.example.demo.service.*;
+import com.example.demo.service.restaurant.FeedbackService;
+import com.example.demo.service.restaurant.MenuService;
+import com.example.demo.service.restaurant.OrderService;
+import com.example.demo.service.restaurant.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,41 +52,41 @@ public class Controllers {
         return ResponseEntity.ok(deletePerson);
     }
 
-        @Autowired
-        private AccountService accountService;
+    @Autowired
+    private AccountService accountService;
 
-        @GetMapping("/getAllAccounts")
-        public List<Account> getAllAccountsData(){
-            return accountService.getAllAccountsData();
-        }
+    @GetMapping("/getAllAccounts")
+    public List<Account> getAllAccountsData(){
+        return accountService.getAllAccountsData();
+    }
 
-        @GetMapping("/account/{accountId}")
-        public ResponseEntity<Account> getAccountById(@PathVariable String accountId){
-            Account account = accountService.getAccountById(accountId);
-            return ResponseEntity.ok(account);
-        }
+    @GetMapping("/account/{accountId}")
+    public ResponseEntity<Account> getAccountById(@PathVariable String accountId){
+        Account account = accountService.getAccountById(accountId);
+        return ResponseEntity.ok(account);
+    }
 
-        @PostMapping("/addAccount")
-        public void addAccount(@RequestBody Account account){
-            accountService.addAccount(account);
-        }
+    @PostMapping("/addAccount")
+    public void addAccount(@RequestBody Account account){
+        accountService.addAccount(account);
+    }
 
-        @PutMapping("/updateAccount/{accountId}")
-        public ResponseEntity<Account> updateAccount(@PathVariable String accountId, @RequestBody Account account){
-            Account updateAccount = accountService.updateAccount(accountId, account);
-            return ResponseEntity.ok(updateAccount);
-        }
+    @PutMapping("/updateAccount/{accountId}")
+    public ResponseEntity<Account> updateAccount(@PathVariable String accountId, @RequestBody Account account){
+        Account updateAccount = accountService.updateAccount(accountId, account);
+        return ResponseEntity.ok(updateAccount);
+    }
 
-        @DeleteMapping("/deleteAccount/{accountId}")
-        public ResponseEntity<Account> deleteAccount(@PathVariable String accountId, Account account){
-            Account deleteAccount = accountService.deleteAccount(accountId);
-            return ResponseEntity.ok(deleteAccount);
-        }
+    @DeleteMapping("/deleteAccount/{accountId}")
+    public ResponseEntity<Account> deleteAccount(@PathVariable String accountId, Account account){
+        Account deleteAccount = accountService.deleteAccount(accountId);
+        return ResponseEntity.ok(deleteAccount);
+    }
 
     @Autowired
     private BillsService billsService;
 
-    @GetMapping("/getAllBillsApsrtc")
+    @GetMapping("/getAllBills")
     public List<BillsApsrtc> getAllBillsData(){
         return billsService.getAllBillsData();
     }
@@ -265,8 +272,8 @@ public class Controllers {
     @Autowired
     private VehiclesService vehiclesService;
 
-    @GetMapping("/getAllVehicless")
-    public List<Vehicles> getAllVehiclessData(){
+    @GetMapping("/getAllVehicles")
+    public List<Vehicles> getAllVehiclesData(){
         return vehiclesService.getAllVehiclesData();
     }
 
@@ -322,6 +329,132 @@ public class Controllers {
     public ResponseEntity<Money> deleteMoney(@PathVariable String moneyId, Money money){
         Money deleteMoney = moneyService.deleteMoney(moneyId);
         return ResponseEntity.ok(deleteMoney);
+    }
+
+
+    @Autowired
+    private RestaurantService restaurantService;
+
+
+    @GetMapping("/getAllRestaurant")
+    public List<Restaurant> getAllRestaurantData(){
+        return restaurantService.getAllRestaurantData();
+    }
+
+    @GetMapping("/restaurant/{restaurantId}")
+    public ResponseEntity<Restaurant> getRestaurantById(@PathVariable String restaurantId){
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+        return ResponseEntity.ok(restaurant);
+    }
+
+    @PostMapping("/addRestaurant")
+    public void addRestaurant(@RequestBody Restaurant restaurant){
+        restaurantService.addRestaurant(restaurant);
+    }
+
+    @PutMapping("/updateRestaurant/{restaurantId}")
+    public ResponseEntity<Restaurant> updateRestaurant(@PathVariable String restaurantId, @RequestBody Restaurant restaurant){
+        Restaurant updaterestaurant = restaurantService.updateRestaurant(restaurantId, restaurant);
+        return ResponseEntity.ok(updaterestaurant);
+    }
+
+    @DeleteMapping("/deleteRestaurant/{restaurantId}")
+    public ResponseEntity<Restaurant> deleteRestaurant(@PathVariable String restaurantId, Restaurant restaurant){
+        Restaurant deleteRestaurant = restaurantService.deleteRestaurant(restaurantId);
+        return ResponseEntity.ok(deleteRestaurant);
+    }
+
+    @Autowired
+    private MenuService menuService;
+
+    @GetMapping("/getAllMenu")
+    public List<Menu> getAllMenuItemData(){
+        return menuService.getAllMenuData();
+    }
+
+    @GetMapping("/menuItem/{itemId}")
+    public ResponseEntity<Menu> getMenuById(@PathVariable String itemId){
+        Menu menuItem = menuService.getMenuByItemId(itemId);
+        return ResponseEntity.ok(menuItem);
+    }
+
+    @PostMapping("/addMenu")
+    public void addMenu(@RequestBody Menu menu){
+        menuService.addMenu(menu);
+    }
+
+    @PutMapping("/updateMenu/{menuId}")
+    public ResponseEntity<Menu> updateMenu(@PathVariable String menuId, @RequestBody Menu menu){
+        Menu updateMenu = menuService.updateMenu(menuId, menu);
+        return ResponseEntity.ok(updateMenu);
+    }
+
+    @DeleteMapping("/deleteMenu/{MenuId}")
+    public ResponseEntity<Menu> deleteMenu(@PathVariable String menuId, Menu menu){
+        Menu deleteMenu = menuService.deleteMenu(menuId);
+        return ResponseEntity.ok(deleteMenu);
+    }
+
+    @Autowired
+    private OrderService orderService;
+
+    @GetMapping("/getAllOrder")
+    public List<Order9> getAllOrderData(){
+        return orderService.getAllOrdersData();
+    }
+
+    @GetMapping("/Order/{OrderId}")
+    public ResponseEntity<Order9> getOrderById(@PathVariable String OrderId){
+        Order9 Order =orderService.getOrderById(OrderId);
+        return ResponseEntity.ok(Order);
+    }
+
+    @PostMapping("/addOrder")
+    public void addOrder(@RequestBody Order9 order){
+        orderService.addOrder(order);
+    }
+
+    @PutMapping("/updateOrder/{OrderId}")
+    public ResponseEntity<Order9> updateOrder(@PathVariable String orderId, @RequestBody Order9 order){
+        Order9 updateOrder = orderService.updateOrder(orderId, order);
+        return ResponseEntity.ok(updateOrder);
+    }
+
+    @DeleteMapping("/deleteOrder/{OrderId}")
+    public ResponseEntity<Order9> deleteOrder(@PathVariable String orderId, Order9 order){
+        Order9 deleteOrder = orderService.deleteOrder(orderId);
+        return ResponseEntity.ok(deleteOrder);
+    }
+
+    @Autowired
+    private FeedbackService feedbackService;
+
+    @GetMapping("/getAllFeedback")
+    public List<Feedback> getAllFeedbacksData(){
+        return feedbackService.getAllFeedbacksData();
+    }
+
+    @GetMapping("/feedback/{feedbackId}")
+    public ResponseEntity<Feedback> getFeedbackById(@PathVariable String feedbackId){
+        Feedback feedback = feedbackService.getFeedbackById(feedbackId);
+        return ResponseEntity.ok(feedback);
+    }
+
+    @PostMapping("/addFeedback")
+    public void addFeedback(@RequestBody Feedback feedback){
+        feedbackService.addFeedback(feedback);
+    }
+
+    @PutMapping("/updateFeedback/{feedbackId}")
+    public ResponseEntity<Feedback> updateFeedback(@PathVariable String feedbackId, @RequestBody Feedback feedback){
+        Feedback updateFeedback = feedbackService.updateFeedback(feedbackId, feedback);
+        return ResponseEntity.ok(updateFeedback);
+    }
+
+    @DeleteMapping("/deleteFeedback/{feedbackId}")
+    public ResponseEntity<Feedback> deleteFeedback(@PathVariable String feedbackId, Feedback feedback){
+        Feedback deleteFeedback = feedbackService.deleteFeedback(feedbackId);
+        return ResponseEntity.ok(deleteFeedback);
     }
 }
 
