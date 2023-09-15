@@ -18,6 +18,7 @@ public class MenuService {
     }
 
     public void addMenu(Menu menu){
+        System.out.println(menu);
         menuRepository.save(menu);
     }
 

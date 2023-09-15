@@ -1,15 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.*;
-import com.example.demo.entity.restaurant.Feedback;
-import com.example.demo.entity.restaurant.Menu;
-import com.example.demo.entity.restaurant.Order9;
-import com.example.demo.entity.restaurant.Restaurant;
+import com.example.demo.entity.restaurant.*;
 import com.example.demo.service.*;
-import com.example.demo.service.restaurant.FeedbackService;
-import com.example.demo.service.restaurant.MenuService;
-import com.example.demo.service.restaurant.OrderService;
-import com.example.demo.service.restaurant.RestaurantService;
+import com.example.demo.service.restaurant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -84,34 +78,34 @@ public class Controllers {
     }
 
     @Autowired
-    private BillsService billsService;
+    private BillService billService;
 
-    @GetMapping("/getAllBills")
-    public List<BillsApsrtc> getAllBillsData(){
-        return billsService.getAllBillsData();
+    @GetMapping("/getAllBill")
+    public List<Bill> getAllBillData(){
+        return billService.getAllBillsData();
     }
 
-    @GetMapping("/bills/{billsId}")
-    public ResponseEntity<BillsApsrtc> getBillsById(@PathVariable String billsId){
-        BillsApsrtc BillsApsrtc = billsService.getBillsById(billsId);
-        return ResponseEntity.ok(BillsApsrtc);
+    @GetMapping("/bill/{billId}")
+    public ResponseEntity<Bill> getBillById(@PathVariable String billId){
+        Bill Bill = billService.getBillById(billId);
+        return ResponseEntity.ok(Bill);
     }
 
-    @PostMapping("/addBills")
-    public void addBills(@RequestBody BillsApsrtc bills){
-        billsService.addBills(bills);
+    @PostMapping("/addBill")
+    public void addBill(@RequestBody Bill bill){
+        billService.addBill(bill);
     }
 
-    @PutMapping("/updateBills/{billsId}")
-    public ResponseEntity<BillsApsrtc> updateBills(@PathVariable String billsId, @RequestBody BillsApsrtc bills){
-        BillsApsrtc updateBills = billsService.updateBills(billsId, bills);
-        return ResponseEntity.ok(updateBills);
+    @PutMapping("/updateBill/{billsId}")
+    public ResponseEntity<Bill> updateBill(@PathVariable String billId, @RequestBody Bill bill){
+        Bill updateBill = billService.updateBill(billId, bill);
+        return ResponseEntity.ok(updateBill);
     }
 
     @DeleteMapping("/deleteBills/{billsId}")
-    public ResponseEntity<BillsApsrtc> deleteBills(@PathVariable String billsId, BillsApsrtc BillsApsrtc){
-        BillsApsrtc deleteBills = billsService.deleteBills(billsId);
-        return ResponseEntity.ok(deleteBills);
+    public ResponseEntity<Bill> deleteBill(@PathVariable String billId, Bill Bill){
+        com.example.demo.entity.restaurant.Bill deleteBill = billService.deleteBill(billId);
+        return ResponseEntity.ok(deleteBill);
     }
 
     @Autowired

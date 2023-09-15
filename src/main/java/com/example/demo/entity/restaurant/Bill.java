@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.entity.restaurant;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,12 +19,12 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class BillsApsrtc {
+public class Bill {
     @Id
     @Column(nullable = false, unique = true)
     private String billId;
-    private String consumerName, consumerNo, address;
-    private Date billDate, discountDate, dueDate, billPeriod, billMonth;
-    private Integer meterNo, metreUnits, unitsBased, billAmount, discountAmount;
+    private Date date;
+    private String address, item;
+    private Integer quantity, price, discount, amount;
 
 }

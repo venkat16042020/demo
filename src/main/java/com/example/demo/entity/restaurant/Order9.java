@@ -27,7 +27,6 @@ public class Order9 {
 //    @Column(length=10, nullable=false, unique=false)
     private String itemName;
     private int numberOfItems;
-
     private String cost;
     private String discount;
     private String couponId;
