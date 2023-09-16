@@ -41,7 +41,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deletePerson/{personId}")
-    public ResponseEntity<Person> deletePerson(@PathVariable String personId, Person person){
+    public ResponseEntity<Person> deletePerson(@PathVariable String personId){
         Person deletePerson = personService.deletePerson(personId);
         return ResponseEntity.ok(deletePerson);
     }
@@ -72,7 +72,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteAccount/{accountId}")
-    public ResponseEntity<Account> deleteAccount(@PathVariable String accountId, Account account){
+    public ResponseEntity<Account> deleteAccount(@PathVariable String accountId){
         Account deleteAccount = accountService.deleteAccount(accountId);
         return ResponseEntity.ok(deleteAccount);
     }
@@ -103,7 +103,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteBills/{billsId}")
-    public ResponseEntity<Bill> deleteBill(@PathVariable String billId, Bill Bill){
+    public ResponseEntity<Bill> deleteBill(@PathVariable String billId){
         com.example.demo.entity.restaurant.Bill deleteBill = billService.deleteBill(billId);
         return ResponseEntity.ok(deleteBill);
     }
@@ -134,7 +134,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteElectronics/{electronicsId}")
-    public ResponseEntity<Electronics> deleteElectronics(@PathVariable String electronicsId, Electronics electronics){
+    public ResponseEntity<Electronics> deleteElectronics(@PathVariable String electronicsId){
         Electronics deleteElectronics = electronicsService.deleteelectronics(electronicsId);
         return ResponseEntity.ok(deleteElectronics);
     }
@@ -165,7 +165,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteFamilyMembers/{familyMembersId}")
-    public ResponseEntity<FamilyMembers> deleteFamilyMembers(@PathVariable String familyMembersId, FamilyMembers familyMembers){
+    public ResponseEntity<FamilyMembers> deleteFamilyMembers(@PathVariable String familyMembersId){
         FamilyMembers deleteFamilyMembers = familyMembersService.deletefamilyMembers(familyMembersId);
         return ResponseEntity.ok(deleteFamilyMembers);
     }
@@ -196,7 +196,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteFriend/{friendId}")
-    public ResponseEntity<Friend> deleteFriend(@PathVariable String friendId, Friend friend){
+    public ResponseEntity<Friend> deleteFriend(@PathVariable String friendId){
         Friend deleteFriend = friendService.deleteFriend(friendId);
         return ResponseEntity.ok(deleteFriend);
     }
@@ -227,7 +227,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteHouseHoldThings/{houseHoldThingsId}")
-    public ResponseEntity<HouseHoldThings> deleteHouseHoldThings(@PathVariable String houseHoldThingsId, HouseHoldThings houseHoldThings){
+    public ResponseEntity<HouseHoldThings> deleteHouseHoldThings(@PathVariable String houseHoldThingsId){
         HouseHoldThings deleteHouseHoldThings = houseHoldThingsService.deleteHouseHoldThings(houseHoldThingsId);
         return ResponseEntity.ok(deleteHouseHoldThings);
     }
@@ -258,7 +258,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteRelatives/{relativesId}")
-    public ResponseEntity<Relatives> deleteRelatives(@PathVariable String relativesId, Relatives relatives){
+    public ResponseEntity<Relatives> deleteRelatives(@PathVariable String relativesId){
         Relatives deleteRelatives = relativesService.deleterelatives(relativesId);
         return ResponseEntity.ok(deleteRelatives);
     }
@@ -289,7 +289,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteVehicles/{vehiclesId}")
-    public ResponseEntity<Vehicles> deleteVehicles(@PathVariable String vehiclesId, Vehicles vehicles){
+    public ResponseEntity<Vehicles> deleteVehicles(@PathVariable String vehiclesId){
         Vehicles deleteVehicles = vehiclesService.deleteVehicles(vehiclesId);
         return ResponseEntity.ok(deleteVehicles);
     }
@@ -320,7 +320,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteMoney/{moneyId}")
-    public ResponseEntity<Money> deleteMoney(@PathVariable String moneyId, Money money){
+    public ResponseEntity<Money> deleteMoney(@PathVariable String moneyId){
         Money deleteMoney = moneyService.deleteMoney(moneyId);
         return ResponseEntity.ok(deleteMoney);
     }
@@ -353,7 +353,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteRestaurant/{restaurantId}")
-    public ResponseEntity<Restaurant> deleteRestaurant(@PathVariable String restaurantId, Restaurant restaurant){
+    public ResponseEntity<Restaurant> deleteRestaurant(@PathVariable String restaurantId){
         Restaurant deleteRestaurant = restaurantService.deleteRestaurant(restaurantId);
         return ResponseEntity.ok(deleteRestaurant);
     }
@@ -377,15 +377,15 @@ public class Controllers {
         menuService.addMenu(menu);
     }
 
-    @PutMapping("/updateMenu/{menuId}")
-    public ResponseEntity<Menu> updateMenu(@PathVariable String menuId, @RequestBody Menu menu){
-        Menu updateMenu = menuService.updateMenu(menuId, menu);
+    @PutMapping("/updateMenu/{itemId}")
+    public ResponseEntity<Menu> updateMenu(@PathVariable String itemId, @RequestBody Menu menu){
+        Menu updateMenu = menuService.updateMenu(itemId, menu);
         return ResponseEntity.ok(updateMenu);
     }
 
-    @DeleteMapping("/deleteMenu/{MenuId}")
-    public ResponseEntity<Menu> deleteMenu(@PathVariable String menuId, Menu menu){
-        Menu deleteMenu = menuService.deleteMenu(menuId);
+    @DeleteMapping("/deleteMenu/{itemId}")
+    public ResponseEntity<Menu> deleteMenu(@PathVariable String itemId){
+        Menu deleteMenu = menuService.deleteMenu(itemId);
         return ResponseEntity.ok(deleteMenu);
     }
 
@@ -414,8 +414,8 @@ public class Controllers {
         return ResponseEntity.ok(updateOrder);
     }
 
-    @DeleteMapping("/deleteOrder/{OrderId}")
-    public ResponseEntity<Order9> deleteOrder(@PathVariable String orderId, Order9 order){
+    @DeleteMapping("/deleteOrder/{orderId}")
+    public ResponseEntity<Order9> deleteOrder(@PathVariable String orderId){
         Order9 deleteOrder = orderService.deleteOrder(orderId);
         return ResponseEntity.ok(deleteOrder);
     }
@@ -446,7 +446,7 @@ public class Controllers {
     }
 
     @DeleteMapping("/deleteFeedback/{feedbackId}")
-    public ResponseEntity<Feedback> deleteFeedback(@PathVariable String feedbackId, Feedback feedback){
+    public ResponseEntity<Feedback> deleteFeedback(@PathVariable String feedbackId){
         Feedback deleteFeedback = feedbackService.deleteFeedback(feedbackId);
         return ResponseEntity.ok(deleteFeedback);
     }
