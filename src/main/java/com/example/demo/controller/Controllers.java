@@ -397,10 +397,10 @@ public class Controllers {
         return orderService.getAllOrdersData();
     }
 
-    @GetMapping("/Order/{OrderId}")
-    public ResponseEntity<Order9> getOrderById(@PathVariable String OrderId){
-        Order9 Order =orderService.getOrderById(OrderId);
-        return ResponseEntity.ok(Order);
+    @GetMapping("/order/{orderId}")
+    public ResponseEntity<Order9> getOrderById(@PathVariable String orderId){
+        Order9 order =orderService.getOrderById(orderId);
+        return ResponseEntity.ok(order);
     }
 
     @PostMapping("/addOrder")
@@ -408,7 +408,7 @@ public class Controllers {
         orderService.addOrder(order);
     }
 
-    @PutMapping("/updateOrder/{OrderId}")
+    @PutMapping("/updateOrder/{orderId}")
     public ResponseEntity<Order9> updateOrder(@PathVariable String orderId, @RequestBody Order9 order){
         Order9 updateOrder = orderService.updateOrder(orderId, order);
         return ResponseEntity.ok(updateOrder);
