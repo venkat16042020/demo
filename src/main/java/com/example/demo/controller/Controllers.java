@@ -366,6 +366,11 @@ public class Controllers {
         return menuService.getAllMenuData();
     }
 
+    @GetMapping("/getAllMenuItems")
+    public List<Object> getAllMenuItems(){
+        return menuService.getAllMenuItemsList();
+    }
+
     @GetMapping("/menuItem/{itemId}")
     public ResponseEntity<Menu> getMenuById(@PathVariable String itemId){
         Menu menuItem = menuService.getMenuByItemId(itemId);
