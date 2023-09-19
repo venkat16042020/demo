@@ -18,6 +18,51 @@ public class Controllers {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private RentService rentService;
+
+    @Autowired
+    private AccountService accountService;
+
+    @Autowired
+    private BillService billService;
+
+    @Autowired
+    private ElectronicsService electronicsService;
+    @Autowired
+    private FamilyMembersService familyMembersService;
+
+    @Autowired
+    private FriendService friendService;
+    @Autowired
+    private RelativesService relativesService;
+
+    @Autowired
+    private HouseHoldThingsService houseHoldThingsService;
+    @Autowired
+    private MoneyService moneyService;
+
+    @Autowired
+    private RestaurantService restaurantService;
+    @Autowired
+    private FeedbackService feedbackService;
+
+
+    @Autowired
+    private VehiclesService vehiclesService;
+
+
+    @Autowired
+    private MenuService menuService;
+
+    @Autowired
+    private StockService stockService;
+    @Autowired
+    private InfrastructureService infrastructureService;
+
+    @Autowired
+    private OrderService orderService;
+
     @GetMapping("/getAllPersons")
     public List<Person> getAllPersonsData(){
         return personService.getAllPersonsData();
@@ -46,8 +91,6 @@ public class Controllers {
         return ResponseEntity.ok(deletePerson);
     }
 
-    @Autowired
-    private AccountService accountService;
 
     @GetMapping("/getAllAccounts")
     public List<Account> getAllAccountsData(){
@@ -77,8 +120,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteAccount);
     }
 
-    @Autowired
-    private BillService billService;
 
     @GetMapping("/getAllBill")
     public List<Bill> getAllBillData(){
@@ -108,8 +149,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteBill);
     }
 
-    @Autowired
-    private ElectronicsService electronicsService;
 
     @GetMapping("/getAllElectronics")
     public List<Electronics> getAllElectronicsData(){
@@ -139,8 +178,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteElectronics);
     }
 
-    @Autowired
-    private FamilyMembersService familyMembersService;
 
     @GetMapping("/getAllFamilyMembers")
     public List<FamilyMembers> getAllFamilyMembersData(){
@@ -170,8 +207,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteFamilyMembers);
     }
 
-    @Autowired
-    private FriendService friendService;
 
     @GetMapping("/getAllFriends")
     public List<Friend> getAllFriendsData(){
@@ -201,8 +236,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteFriend);
     }
 
-    @Autowired
-    private HouseHoldThingsService houseHoldThingsService;
 
     @GetMapping("/getAllHouseHoldThings")
     public List<HouseHoldThings> getAllHouseHoldThingsData(){
@@ -232,8 +265,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteHouseHoldThings);
     }
 
-    @Autowired
-    private RelativesService relativesService;
 
     @GetMapping("/getAllRelatives")
     public List<Relatives> getAllRelativesData(){
@@ -263,9 +294,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteRelatives);
     }
 
-    @Autowired
-    private VehiclesService vehiclesService;
-
     @GetMapping("/getAllVehicles")
     public List<Vehicles> getAllVehiclesData(){
         return vehiclesService.getAllVehiclesData();
@@ -294,8 +322,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteVehicles);
     }
 
-    @Autowired
-    private MoneyService moneyService;
 
     @GetMapping("/getAllMoneys")
     public List<Money> getAllMoneysData(){
@@ -326,9 +352,6 @@ public class Controllers {
     }
 
 
-    @Autowired
-    private RestaurantService restaurantService;
-
 
     @GetMapping("/getAllRestaurant")
     public List<Restaurant> getAllRestaurantData(){
@@ -357,9 +380,6 @@ public class Controllers {
         Restaurant deleteRestaurant = restaurantService.deleteRestaurant(restaurantId);
         return ResponseEntity.ok(deleteRestaurant);
     }
-
-    @Autowired
-    private MenuService menuService;
 
     @GetMapping("/getAllMenu")
     public List<Menu> getAllMenuItemData(){
@@ -394,8 +414,7 @@ public class Controllers {
         return ResponseEntity.ok(deleteMenu);
     }
 
-    @Autowired
-    private OrderService orderService;
+
 
     @GetMapping("/getAllOrder")
     public List<Order9> getAllOrderData(){
@@ -425,8 +444,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteOrder);
     }
 
-    @Autowired
-    private FeedbackService feedbackService;
 
     @GetMapping("/getAllFeedback")
     public List<Feedback> getAllFeedbacksData(){
@@ -455,5 +472,107 @@ public class Controllers {
         Feedback deleteFeedback = feedbackService.deleteFeedback(feedbackId);
         return ResponseEntity.ok(deleteFeedback);
     }
+
+
+
+    @GetMapping("/getAllStock")
+    public List<Stock> getAllStockData(){
+        return stockService.getAllStockData();
+    }
+
+    @GetMapping("/getAllStocksList")
+    public List<Object> getAllStock(){
+        return stockService.getAllStockList();
+    }
+
+    @GetMapping("/stock/{stockId}")
+    public ResponseEntity<Stock> getStockById(@PathVariable String stockId){
+        Stock stock = stockService.getStockBystockId(stockId);
+        return ResponseEntity.ok(stock);
+    }
+
+    @PostMapping("/addStock")
+    public void addStock(@RequestBody Stock stock){
+        stockService.addStock(stock);
+    }
+
+    @PutMapping("/updateStock/{stockId}")
+    public ResponseEntity<Stock> updateStock(@PathVariable String stockId, @RequestBody Stock stock){
+        Stock updateStock = stockService.updateStock(stockId, stock);
+        return ResponseEntity.ok(updateStock);
+    }
+
+    @DeleteMapping("/deleteStock/{stockId}")
+    public ResponseEntity<Stock> deleteStock(@PathVariable String stockId){
+        Stock deleteStock = stockService.deleteStock(stockId);
+        return ResponseEntity.ok(deleteStock);
+    }
+
+    @GetMapping("/getAllInfrastructure")
+    public List<Infrastructure> getAllInfrastructureItemData(){
+        return infrastructureService.getAllInfrastructureData();
+    }
+
+    @GetMapping("/getAllInfrastructureItems")
+    public List<Object> getAllInfrastructureItems(){
+        return infrastructureService.getAllInfrastructureItemsList();
+    }
+
+    @GetMapping("/infrastructureItem/{itemId}")
+    public ResponseEntity<Infrastructure> getInfrastructureById(@PathVariable String itemId){
+        Infrastructure infrastructureItem = infrastructureService.getInfrastructureByItemId(itemId);
+        return ResponseEntity.ok(infrastructureItem);
+    }
+
+    @PostMapping("/addInfrastructure")
+    public void addInfrastructure(@RequestBody Infrastructure infrastructure){
+        infrastructureService.addInfrastructure(infrastructure);
+    }
+
+    @PutMapping("/updateInfrastructure/{itemId}")
+    public ResponseEntity<Infrastructure> updateInfrastructure(@PathVariable String itemId, @RequestBody Infrastructure infrastructure){
+        Infrastructure updateInfrastructure = infrastructureService.updateInfrastructure(itemId, infrastructure);
+        return ResponseEntity.ok(updateInfrastructure);
+    }
+
+    @DeleteMapping("/deleteInfrastructure/{itemId}")
+    public ResponseEntity<Infrastructure> deleteInfrastructure(@PathVariable String itemId){
+        Infrastructure deleteInfrastructure = infrastructureService.deleteInfrastructure(itemId);
+        return ResponseEntity.ok(deleteInfrastructure);
+    }
+
+    @GetMapping("/getAllRent")
+    public List<Rent> getAllRentItemData(){
+        return rentService.getAllRentData();
+    }
+
+    @GetMapping("/getAllRentList")
+    public List<Object> getAllRent(){
+        return rentService.getAllRentRentsList();
+    }
+
+    @GetMapping("/rent/{rendId}")
+    public ResponseEntity<Rent> getRentById(@PathVariable String rentId){
+        Rent rent = rentService.getRentByRentId(rentId);
+        return ResponseEntity.ok(rent);
+    }
+
+    @PostMapping("/addRent")
+    public void addRent(@RequestBody Rent rent){
+        rentService.addRent(rent);
+    }
+
+    @PutMapping("/updateRent/{rentId}")
+    public ResponseEntity<Rent> updateRent(@PathVariable String rentId, @RequestBody Rent rent){
+        Rent updateRent = rentService.updateRent(rentId, rent);
+        return ResponseEntity.ok(updateRent);
+    }
+
+    @DeleteMapping("/deleteRent/{itemId}")
+    public ResponseEntity<Rent> deleteRent(@PathVariable String rentId){
+        Rent deleteRent = rentService.deleteRent(rentId);
+        return ResponseEntity.ok(deleteRent);
+    }
+
 }
 
