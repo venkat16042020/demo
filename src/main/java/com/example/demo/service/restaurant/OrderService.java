@@ -43,10 +43,15 @@ public class OrderService {
         updateOrder.setItemId(order.getItemId());
         updateOrder.setItemName(order.getItemName());
         updateOrder.setNumberOfItems(order.getNumberOfItems());
-        updateOrder.setCost(order.getCost());
+        updateOrder.setIsTakeAway(order.getIsTakeAway());
         updateOrder.setDiscount(order.getDiscount());
         updateOrder.setCouponId(order.getCouponId());
-        updateOrder.setIsTakeAway(order.getIsTakeAway());
+        updateOrder.setCost(order.getCost());
+        updateOrder.setCGst(order.getCGst());
+        updateOrder.setSGst(order.getSGst());
+        updateOrder.setTotalGst(order.getTotalGst());
+        updateOrder.setTotalCost(order.getTotalCost());
+
         orderRepository.save(updateOrder);
         return updateOrder;
     }

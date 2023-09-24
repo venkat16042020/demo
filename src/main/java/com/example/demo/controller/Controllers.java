@@ -480,7 +480,7 @@ public class Controllers {
         return stockService.getAllStockData();
     }
 
-    @GetMapping("/getAllStocksList")
+    @GetMapping("/getAllStockList")
     public List<Object> getAllStock(){
         return stockService.getAllStockList();
     }
