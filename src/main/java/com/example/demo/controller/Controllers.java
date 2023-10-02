@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.*;
+import com.example.demo.entity.OngolePublicSchool.*;
 import com.example.demo.entity.restaurant.*;
 import com.example.demo.service.*;
+import com.example.demo.service.OngolePublicSchool.*;
 import com.example.demo.service.restaurant.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,8 +53,6 @@ public class Controllers {
 
     @Autowired
     private VehiclesService vehiclesService;
-
-
     @Autowired
     private MenuService menuService;
 
@@ -63,6 +64,17 @@ public class Controllers {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private AdminService adminService;
+
+    @Autowired
+    private AttendanceService attendanceService;
+    @Autowired
+    private  StudentsService studentsService;
+    @Autowired
+    private StaffsService staffsService;
+    @Autowired
+    private NonStaffsService nonStaffsService;
     @GetMapping("/getAllPersons")
     public List<Person> getAllPersonsData(){
         return personService.getAllPersonsData();
@@ -572,6 +584,172 @@ public class Controllers {
     public ResponseEntity<Rent> deleteRent(@PathVariable String rentId){
         Rent deleteRent = rentService.deleteRent(rentId);
         return ResponseEntity.ok(deleteRent);
+    }
+
+    @GetMapping("/getAllAdmin")
+    public List<Admin> getAllAdminData(){
+        return adminService.getAllAdminData();
+    }
+
+    @GetMapping("/getAllAdmin1")
+    public List<Object> getAllAdmin(){
+        return adminService.getAllAdminList();
+    }
+
+    @GetMapping("/admin/{adminId}")
+    public ResponseEntity<Admin> getAdminByAdminId(@PathVariable String adminId){
+        Admin admin = adminService.getAdmin(adminId);
+        return ResponseEntity.ok(admin);
+    }
+
+    @PostMapping("/addAdmin")
+    public void addAdmin(@RequestBody Admin admin){
+        adminService.addAdmin(admin);
+    }
+
+    @PutMapping("/updateAdmin/{adminId}")
+    public ResponseEntity<Admin> updateAdmin(@PathVariable String adminId, @RequestBody Admin admin){
+        Admin updateAdmin = adminService.updateAdmin(adminId, admin);
+        return ResponseEntity.ok(updateAdmin);
+    }
+
+    @DeleteMapping("/deleteAdmin/{adminId}")
+    public ResponseEntity<Admin> deleteAdmin(@PathVariable String adminId){
+        Admin deleteAdmin = adminService.deleteAdmin(adminId);
+        return ResponseEntity.ok(deleteAdmin);
+    }
+
+    @GetMapping("/getAllAttendance")
+    public List<Attendance> getAllAttendanceData(){
+        return attendanceService.getAllAttendanceData();
+    }
+
+    @GetMapping("/getAllAttendances")
+    public List<Object> getAllAttendances(){
+        return attendanceService.getAllAttendanceList();
+    }
+
+    @GetMapping("/attendance/{attendanceId}")
+    public ResponseEntity<Attendance> getAttendanceById(@PathVariable String attendanceId){
+        Attendance attendance = attendanceService.getAttendanceByItemId(attendanceId);
+        return ResponseEntity.ok(attendance);
+    }
+
+    @PostMapping("/addAttendance")
+    public void addAttendance(@RequestBody Attendance attendance){
+        attendanceService.addAttendance(attendance);
+    }
+
+    @PutMapping("/updateAttendance/{attendanceId}")
+    public ResponseEntity<Attendance> updateAttendance(@PathVariable String attendanceId, @RequestBody Attendance attendance){
+        Attendance updateAttendance = attendanceService.updateAttendance(attendanceId, attendance);
+        return ResponseEntity.ok(updateAttendance);
+    }
+
+    @DeleteMapping("/deleteAttendance/{attendanceId}")
+    public ResponseEntity<Attendance> deleteAttendance(@PathVariable String attendanceId){
+        Attendance deleteAttendance = attendanceService.deleteAttendance(attendanceId);
+        return ResponseEntity.ok(deleteAttendance);
+    }
+
+    @GetMapping("/getAllStudents")
+    public List<Students> getAllStudentsData(){
+        return studentsService.getAllStudentsData();
+    }
+
+    @GetMapping("/getAllStudents1")
+    public List<Object> getAllStudents(){
+        return studentsService.getAllStudentsList();
+    }
+
+    @GetMapping("/students/{studentsId}")
+    public ResponseEntity<Students> getStudentsById(@PathVariable String studentsId){
+        Students students = studentsService.getStudentsByItemId(studentsId);
+        return ResponseEntity.ok(students);
+    }
+
+    @PostMapping("/addStudents")
+    public void addStudents(@RequestBody Students students){
+        studentsService.addStudents(students);
+    }
+
+    @PutMapping("/updateStudents/{studentsId}")
+    public ResponseEntity<Students> updateStudents(@PathVariable String studentsId, @RequestBody Students students){
+        Students updateStudents = studentsService.updateStudents(studentsId, students);
+        return ResponseEntity.ok(updateStudents);
+    }
+
+    @DeleteMapping("/deleteStudents/{studentsId}")
+    public ResponseEntity<Students> deleteStudents(@PathVariable String studentsId){
+        Students deleteStudents = studentsService.deleteStudents(studentsId);
+        return ResponseEntity.ok(deleteStudents);
+    }
+
+    @GetMapping("/getAllStaffs")
+    public List<Staffs> getAllStaffsData(){
+        return staffsService.getAllStaffsData();
+    }
+
+    @GetMapping("/getAllStaffs1")
+    public List<Object> getAllStaffs(){
+        return staffsService.getAllStaffsList();
+    }
+
+    @GetMapping("/staffs/{staffsId}")
+    public ResponseEntity<Staffs> getStaffsById(@PathVariable String staffsId){
+        Staffs staffs = staffsService.getStaffsByItemId(staffsId);
+        return ResponseEntity.ok(staffs);
+    }
+
+    @PostMapping("/addStaffs")
+    public void addStaffs(@RequestBody Staffs staffs){
+        staffsService.addStaffs(staffs);
+    }
+
+    @PutMapping("/updateStaffs/{staffsId}")
+    public ResponseEntity<Staffs> updateStaffs(@PathVariable String staffsId, @RequestBody Staffs staffs){
+        Staffs updateStaffs = staffsService.updateStaffs(staffsId, staffs);
+        return ResponseEntity.ok(updateStaffs);
+    }
+
+    @DeleteMapping("/deleteStaffs/{staffsId}")
+    public ResponseEntity<Staffs> deleteStaffs(@PathVariable String staffsId){
+        Staffs deleteStaffs = staffsService.deleteStaffs(staffsId);
+        return ResponseEntity.ok(deleteStaffs);
+    }
+
+
+    @GetMapping("/getAllNonStaffs")
+    public List<NonStaffs> getAllNonStaffsData(){
+        return nonStaffsService.getAllNonStaffsData();
+    }
+
+    @GetMapping("/getAllNonStaffs1")
+    public List<Object> getAllNonStaffs(){
+        return nonStaffsService.getAllNonStaffsList();
+    }
+
+    @GetMapping("/NonStaffs/{NonStaffsId}")
+    public ResponseEntity<NonStaffs> getNonStaffsById(@PathVariable String nonStaffsId){
+        NonStaffs nonStaffs = nonStaffsService.getNonStaffsByItemId(nonStaffsId);
+        return ResponseEntity.ok(nonStaffs);
+    }
+
+    @PostMapping("/addNonStaffs")
+    public void addNonStaffs(@RequestBody NonStaffs nonStaffs){
+        nonStaffsService.addNonStaffs(nonStaffs);
+    }
+
+    @PutMapping("/updateNonStaffs/{nonStaffsId}")
+    public ResponseEntity<NonStaffs> updateNonStaffs(@PathVariable String nonStaffsId, @RequestBody NonStaffs nonStaffs){
+        NonStaffs updateNonStaffs = nonStaffsService.updateNonStaffs(nonStaffsId, nonStaffs);
+        return ResponseEntity.ok(updateNonStaffs);
+    }
+
+    @DeleteMapping("/deleteNonStaffs/{nonStaffsId}")
+    public ResponseEntity<NonStaffs> deleteNonStaffs(@PathVariable String nonStaffsId){
+        NonStaffs deleteNonStaffs = nonStaffsService.deleteNonStaffs(nonStaffsId);
+        return ResponseEntity.ok(deleteNonStaffs);
     }
 
 }

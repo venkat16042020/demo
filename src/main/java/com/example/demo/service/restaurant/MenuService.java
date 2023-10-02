@@ -44,9 +44,14 @@ public class MenuService {
         updateMenu.setMenuId(menu.getMenuId());
         updateMenu.setItemId(menu.getItemId());
         updateMenu.setItemName(menu.getItemName());
-        updateMenu.setCost(menu.getCost());
         updateMenu.setNumberOfItemsAvailable(menu.getNumberOfItemsAvailable());
         updateMenu.setDate(menu.getDate());
+        updateMenu.setCost(menu.getCost());
+        updateMenu.setCGst(menu.getCGst());
+        updateMenu.setSGst(menu.getSGst());
+        updateMenu.setTotalGst(menu.getTotalGst());
+        updateMenu.setTotalCost(menu.getTotalCost());
+        System.out.println(updateMenu);
         menuRepository.save(updateMenu);
         return updateMenu;
     }
