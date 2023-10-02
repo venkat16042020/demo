@@ -8,7 +8,6 @@ import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -32,6 +31,6 @@ public class Menu {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    private double cost, cGst, sGst, totalGst, totalCost;
+    private double cost, centralGst, stateGst, totalGst, totalCost;
 
 }

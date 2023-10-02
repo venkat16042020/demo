@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class MenuService {
@@ -47,8 +46,8 @@ public class MenuService {
         updateMenu.setNumberOfItemsAvailable(menu.getNumberOfItemsAvailable());
         updateMenu.setDate(menu.getDate());
         updateMenu.setCost(menu.getCost());
-        updateMenu.setCGst(menu.getCGst());
-        updateMenu.setSGst(menu.getSGst());
+        updateMenu.setCentralGst(menu.getCentralGst());
+        updateMenu.setStateGst(menu.getStateGst());
         updateMenu.setTotalGst(menu.getTotalGst());
         updateMenu.setTotalCost(menu.getTotalCost());
         System.out.println(updateMenu);
@@ -59,5 +58,4 @@ public class MenuService {
     public List<Object> getAllMenuItemsList(){
         return menuRepository.allMenuItemsList();
     }
-
 }
