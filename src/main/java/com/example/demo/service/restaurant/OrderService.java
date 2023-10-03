@@ -47,8 +47,8 @@ public class OrderService {
         updateOrder.setDiscount(order.getDiscount());
         updateOrder.setCouponId(order.getCouponId());
         updateOrder.setCost(order.getCost());
-        updateOrder.setCGst(order.getCGst());
-        updateOrder.setSGst(order.getSGst());
+        updateOrder.setCentralGst(order.getCentralGst());
+        updateOrder.setStateGst(order.getStateGst());
         updateOrder.setTotalGst(order.getTotalGst());
         updateOrder.setTotalCost(order.getTotalCost());
 
