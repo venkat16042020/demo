@@ -75,6 +75,9 @@ public class Controllers {
     private StaffsService staffsService;
     @Autowired
     private NonStaffsService nonStaffsService;
+    @Autowired
+    private ClassesService classesService;
+
     @GetMapping("/getAllPersons")
     public List<Person> getAllPersonsData(){
         return personService.getAllPersonsData();
@@ -690,7 +693,7 @@ public class Controllers {
         return staffsService.getAllStaffsData();
     }
 
-    @GetMapping("/getAllStaffs1")
+    @GetMapping("/getAllStaffs")
     public List<Object> getAllStaffs(){
         return staffsService.getAllStaffsList();
     }
@@ -751,6 +754,40 @@ public class Controllers {
         NonStaffs deleteNonStaffs = nonStaffsService.deleteNonStaffs(nonStaffsId);
         return ResponseEntity.ok(deleteNonStaffs);
     }
+
+    @GetMapping("/getAllClasses")
+    public List<Classes> getAllClassesData(){
+        return classesService.getAllClassesData();
+    }
+
+    @GetMapping("/getAllClasses")
+    public List<Object> getAllClasses(){
+        return classesService.getAllClassesList();
+    }
+
+    @GetMapping("/classes/{classesId}")
+    public ResponseEntity<Classes> getClassesById(@PathVariable String classesId){
+        Classes classes = classesService.getClasses(classesId);
+        return ResponseEntity.ok(classes);
+    }
+
+    @PostMapping("/addClasses")
+    public void addClasses(@RequestBody Classes classes){
+        classesService.addClasses(classes);
+    }
+
+    @PutMapping("/updateClasses/{classesId}")
+    public ResponseEntity<Classes> updateClasses(@PathVariable String classesId, @RequestBody Classes classes){
+        Classes updateClasses = classesService.updateClasses(classesId, classes);
+        return ResponseEntity.ok(updateClasses);
+    }
+
+    @DeleteMapping("/deleteClasses/{classesId}")
+    public ResponseEntity<Classes> deleteClasses(@PathVariable String classesId){
+        Classes deleteClasses = classesService.deleteClasses(classesId);
+        return ResponseEntity.ok(deleteClasses);
+    }
+
 
 }
 
