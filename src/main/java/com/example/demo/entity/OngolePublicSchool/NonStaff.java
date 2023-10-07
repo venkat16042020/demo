@@ -17,10 +17,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Staffs {
+public class NonStaff {
     @Id
     @Column(nullable = false, unique = true)
-    private String staffsId;
+    private String nonStaffId;
     private String firstName, lastName, gender, address, phoneNo, emailId;
     private Integer Age;
 
