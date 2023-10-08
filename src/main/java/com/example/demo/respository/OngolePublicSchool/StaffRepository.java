@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface StaffRepository extends JpaRepository<Staff, String> {
 
-    @Query(value = "select StaffsId from Staff", nativeQuery = true)
+    @Query(value = "select StaffId from Staff", nativeQuery = true)
     List<Object> allStaffList();
 }
