@@ -76,6 +76,8 @@ public class Controllers {
     private NonStaffService nonStaffService;
     @Autowired
     private ClassesService classesService;
+    @Autowired
+    private SalariesService SalariesService;
 
     @GetMapping("/getAllPersons")
     public List<Person> getAllPersonsData(){
@@ -786,6 +788,41 @@ public class Controllers {
         Classes deleteClasses = classesService.deleteClasses(classesId);
         return ResponseEntity.ok(deleteClasses);
     }
+
+
+    @GetMapping("/getAllSalaries")
+    public List<Salaries> getAllSalariesData(){
+        return SalariesService.getAllSalariesData();
+    }
+
+    @GetMapping("/getAllSalariesList")
+    public List<Object> getAllSalaries(){
+        return SalariesService.getAllSalariesList();
+    }
+
+    @GetMapping("/salaries/{salariesId}")
+    public ResponseEntity<Salaries> getSalariesBySalariesId(@PathVariable String salariesId){
+        Salaries salaries = SalariesService.getSalaries(salariesId);
+        return ResponseEntity.ok(salaries);
+    }
+
+    @PostMapping("/addSalaries")
+    public void addSalaries(@RequestBody Salaries salaries){
+        SalariesService.addSalaries(salaries);
+    }
+
+    @PutMapping("/updateSalaries/{salariesId}")
+    public ResponseEntity<Salaries> updateSalaries(@PathVariable String salariesId, @RequestBody Salaries salaries){
+        Salaries updateSalaries = SalariesService.updateSalaries(salariesId, salaries);
+        return ResponseEntity.ok(updateSalaries);
+    }
+
+    @DeleteMapping("/deleteSalaries/{salariesId}")
+    public ResponseEntity<Salaries> deleteSalaries(@PathVariable String salariesId){
+        Salaries deleteSalaries = SalariesService.deleteSalaries(salariesId);
+        return ResponseEntity.ok(deleteSalaries);
+    }
+
 
 
 }
