@@ -20,15 +20,14 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Salaries {
+public class Fees {
     @Id
     @Column(nullable = false, unique = true)
-    private String salariesId;
+    private String feesId;
+
+    private String studentsFees, booksFees, gamesFees, dressFees, tuitionFees;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
-
-    private String staffsSal, nonStaffsSal, pf;
-
 
 }

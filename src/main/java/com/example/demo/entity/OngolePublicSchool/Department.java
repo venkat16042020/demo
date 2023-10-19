@@ -1,6 +1,5 @@
 package com.example.demo.entity.OngolePublicSchool;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,8 +7,6 @@ import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import java.util.Date;
 
 @EnableJpaRepositories
 @ComponentScan
@@ -20,15 +17,13 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Salaries {
+public class Department {
     @Id
     @Column(nullable = false, unique = true)
-    private String salariesId;
+    private String departmentId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private String englishDep, teluguDep, hindiDep, mathsDep, scienceDep, socialDep;
 
-    private String staffsSal, nonStaffsSal, pf;
 
 
 }

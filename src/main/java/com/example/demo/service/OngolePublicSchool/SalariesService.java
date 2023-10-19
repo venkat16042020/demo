@@ -42,12 +42,9 @@ public class SalariesService {
         );
         updateSalaries.setSalariesId(salaries.getSalariesId());
         updateSalaries.setDate(salaries.getDate());
-        updateSalaries.setStaffs(salaries.getStaffs());
-        updateSalaries.setNonStaffs(salaries.getNonStaffs());
-        updateSalaries.setGames(salaries.getGames());
-        updateSalaries.setVehicles(salaries.getVehicles());
-        updateSalaries.setInfrastructure(salaries.getInfrastructure());
-        updateSalaries.setMedia(salaries.getMedia());
+        updateSalaries.setStaffsSal(salaries.getStaffsSal());
+        updateSalaries.setNonStaffsSal(salaries.getNonStaffsSal());
+        updateSalaries.setPf(salaries.getPf());
         System.out.println(updateSalaries);
         salariesRepository.save(updateSalaries);
         return updateSalaries;

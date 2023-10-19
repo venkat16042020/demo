@@ -20,8 +20,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class NonStaff {
     @Id
     @Column(nullable = false, unique = true)
+
     private String nonStaffId;
+
     private String firstName, lastName, gender, address, phoneNo, emailId;
+
     private Integer Age;
 
 }

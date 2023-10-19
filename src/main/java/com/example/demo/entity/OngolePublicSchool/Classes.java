@@ -21,7 +21,9 @@ public class Classes {
     @Id
     @Column(nullable = false, unique = true)
     private String classesId;
+
     private String uKg, lKg, firstClass, secondClass, thirdClass, fourthClass, fifthClass;
+
     private String sixthClass, seventhClass, eightClass, ninthClass, tenthClass;
 
 }

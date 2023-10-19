@@ -79,6 +79,23 @@ public class Controllers {
     @Autowired
     private SalariesService SalariesService;
 
+    @Autowired
+    private MediaService MediaService;
+    @Autowired
+    private CulturalService CulturalService;
+    @Autowired
+    private DepartmentService DepartmentService;
+    @Autowired
+    private FeesService FeesService;
+
+    @Autowired
+    private LibraryService LibraryService;
+    @Autowired
+    private AcademicsService AcademicsService;
+    @Autowired
+    private GamesService GamesService;
+
+
     @GetMapping("/getAllPersons")
     public List<Person> getAllPersonsData(){
         return personService.getAllPersonsData();
@@ -824,6 +841,237 @@ public class Controllers {
     }
 
 
+    @GetMapping("/getAllMedia")
+    public List<Media> getAllMediaData(){
+        return MediaService.getAllMediaData();
+    }
+
+    @GetMapping("/getAllMediaList")
+    public List<Object> getAllMedia(){
+        return MediaService.getAllMediaList();
+    }
+
+    @GetMapping("/media/{mediaId}")
+    public ResponseEntity<Media> getMediaByMediaId(@PathVariable String mediaId){
+        Media media = MediaService.getMedia(mediaId);
+        return ResponseEntity.ok(media);
+    }
+
+    @PostMapping("/addMedia")
+    public void addMedia(@RequestBody Media media){
+        MediaService.addMedia(media);
+    }
+
+    @PutMapping("/updateMedia/{mediaId}")
+    public ResponseEntity<Media> updateMedia(@PathVariable String mediaId, @RequestBody Media media){
+        Media updateMedia = MediaService.updateMedia(mediaId, media);
+        return ResponseEntity.ok(updateMedia);
+    }
+
+    @DeleteMapping("/deleteMedia/{mediaId}")
+    public ResponseEntity<Media> deleteMedia(@PathVariable String mediaId){
+        Media deleteMedia = MediaService.deleteMedia(mediaId);
+        return ResponseEntity.ok(deleteMedia);
+    }
+
+    @GetMapping("/getAllCultural")
+    public List<Cultural> getAllCulturalData(){
+        return CulturalService.getAllCulturalData();
+    }
+
+    @GetMapping("/getAllCulturalList")
+    public List<Object> getAllCultural(){
+        return CulturalService.getAllCulturalList();
+    }
+
+    @GetMapping("/cultural/{culturalId}")
+    public ResponseEntity<Cultural> getCulturalByCulturalId(@PathVariable String culturalId){
+        Cultural cultural = CulturalService.getCultural(culturalId);
+        return ResponseEntity.ok(cultural);
+    }
+
+    @PostMapping("/addCultural")
+    public void addCultural(@RequestBody Cultural cultural){
+        CulturalService.addCultural(cultural);
+    }
+
+    @PutMapping("/updateCultural/{culturalId}")
+    public ResponseEntity<Cultural> updateCultural(@PathVariable String culturalId, @RequestBody Cultural cultural){
+        Cultural updateCultural = CulturalService.updateCultural(culturalId, cultural);
+        return ResponseEntity.ok(updateCultural);
+    }
+
+    @DeleteMapping("/deleteCultural/{culturalId}")
+    public ResponseEntity<Cultural> deleteCultural(@PathVariable String culturalId){
+        Cultural deleteCultural = CulturalService.deleteCultural(culturalId);
+        return ResponseEntity.ok(deleteCultural);
+    }
+
+
+    @GetMapping("/getAllDepartment")
+    public List<Department> getAllDepartmentData(){
+        return DepartmentService.getAllDepartmentData();
+    }
+
+    @GetMapping("/getAllDepartmentList")
+    public List<Object> getAllDepartment(){
+        return DepartmentService.getAllDepartmentList();
+    }
+
+    @GetMapping("/department/{departmentId}")
+    public ResponseEntity<Department> getDepartmentByDepartmentId(@PathVariable String departmentId){
+        Department department = DepartmentService.getDepartment(departmentId);
+        return ResponseEntity.ok(department);
+    }
+
+    @PostMapping("/addDepartment")
+    public void addDepartment(@RequestBody Department department){
+        DepartmentService.addDepartment(department);
+    }
+
+    @PutMapping("/updateDepartment/{departmentId}")
+    public ResponseEntity<Department> updateDepartment(@PathVariable String departmentId, @RequestBody Department department){
+        Department updateDepartment = DepartmentService.updateDepartment(departmentId, department);
+        return ResponseEntity.ok(updateDepartment);
+    }
+
+    @DeleteMapping("/deleteDepartment/{departmentId}")
+    public ResponseEntity<Department> deleteDepartment(@PathVariable String departmentId){
+        Department deleteDepartment = DepartmentService.deleteDepartment(departmentId);
+        return ResponseEntity.ok(deleteDepartment);
+    }
+
+
+    @GetMapping("/getAllFees")
+    public List<Fees> getAllFeesData(){
+        return FeesService.getAllFeesData();
+    }
+
+    @GetMapping("/getAllFeesList")
+    public List<Object> getAllFees(){
+        return FeesService.getAllFeesList();
+    }
+
+    @GetMapping("/fees/{feesId}")
+    public ResponseEntity<Fees> getFeesByFeesId(@PathVariable String feesId){
+        Fees fees = FeesService.getFees(feesId);
+        return ResponseEntity.ok(fees);
+    }
+
+    @PostMapping("/addFees")
+    public void addFees(@RequestBody Fees fees){
+        FeesService.addFees(fees);
+    }
+
+    @PutMapping("/updateFees/{feesId}")
+    public ResponseEntity<Fees> updateFees(@PathVariable String feesId, @RequestBody Fees fees){
+        Fees updateFees = FeesService.updateFees(feesId, fees);
+        return ResponseEntity.ok(updateFees);
+    }
+
+    @DeleteMapping("/deleteFees/{feesId}")
+    public ResponseEntity<Fees> deleteFees(@PathVariable String feesId){
+        Fees deleteFees = FeesService.deleteFees(feesId);
+        return ResponseEntity.ok(deleteFees);
+    }
+
+    @GetMapping("/getAllLibrary")
+    public List<Library> getAllLibraryData(){
+        return LibraryService.getAllLibraryData();
+    }
+
+    @GetMapping("/getAllLibraryList")
+    public List<Object> getAllLibrary(){
+        return LibraryService.getAllLibraryList();
+    }
+
+    @GetMapping("/library/{libraryId}")
+    public ResponseEntity<Library> getLibraryByLibraryId(@PathVariable String libraryId){
+        Library library = LibraryService.getLibrary(libraryId);
+        return ResponseEntity.ok(library);
+    }
+
+    @PostMapping("/addLibrary")
+    public void addLibrary(@RequestBody Library library){
+        LibraryService.addLibrary(library);
+    }
+
+    @PutMapping("/updateLibrary/{libraryId}")
+    public ResponseEntity<Library> updateLibrary(@PathVariable String libraryId, @RequestBody Library library){
+        Library updateLibrary = LibraryService.updateLibrary(libraryId, library);
+        return ResponseEntity.ok(updateLibrary);
+    }
+
+    @DeleteMapping("/deleteLibrary/{libraryId}")
+    public ResponseEntity<Library> deleteLibrary(@PathVariable String libraryId){
+        Library deleteLibrary = LibraryService.deleteLibrary(libraryId);
+        return ResponseEntity.ok(deleteLibrary);
+    }
+    @GetMapping("/getAllAcademics")
+    public List<Academics> getAllAcademicsData(){
+        return AcademicsService.getAllAcademicsData();
+    }
+
+    @GetMapping("/getAllAcademicsList")
+    public List<Object> getAllAcademics(){
+        return AcademicsService.getAllAcademicsList();
+    }
+
+    @GetMapping("/academics/{academicsId}")
+    public ResponseEntity<Academics> getAcademicsByAcademicsId(@PathVariable String academicsId){
+        Academics academics = AcademicsService.getAcademics(academicsId);
+        return ResponseEntity.ok(academics);
+    }
+
+    @PostMapping("/addAcademics")
+    public void addAcademics(@RequestBody Academics academics){
+        AcademicsService.addAcademics(academics);
+    }
+
+    @PutMapping("/updateAcademics/{academicsId}")
+    public ResponseEntity<Academics> updateAcademics(@PathVariable String academicsId, @RequestBody Academics academics){
+        Academics updateAcademics = AcademicsService.updateAcademics(academicsId, academics);
+        return ResponseEntity.ok(updateAcademics);
+    }
+
+    @DeleteMapping("/deleteAcademics/{academicsId}")
+    public ResponseEntity<Academics> deleteAcademics(@PathVariable String academicsId){
+        Academics deleteAcademics = AcademicsService.deleteAcademics(academicsId);
+        return ResponseEntity.ok(deleteAcademics);
+    }
+
+    @GetMapping("/getAllGames")
+    public List<Games> getAllGamesData(){
+        return GamesService.getAllGamesData();
+    }
+
+    @GetMapping("/getAllGamesList")
+    public List<Object> getAllGames(){
+        return GamesService.getAllGamesList();
+    }
+
+    @GetMapping("/games/{gamesId}")
+    public ResponseEntity<Games> getGamesByGamesId(@PathVariable String gamesId){
+        Games games = GamesService.getGames(gamesId);
+        return ResponseEntity.ok(games);
+    }
+
+    @PostMapping("/addGames")
+    public void addGames(@RequestBody Games games){
+        GamesService.addGames(games);
+    }
+
+    @PutMapping("/updateGames/{gamesId}")
+    public ResponseEntity<Games> updateGames(@PathVariable String gamesId, @RequestBody Games games){
+        Games updateGames = GamesService.updateGames(gamesId, games);
+        return ResponseEntity.ok(updateGames);
+    }
+
+    @DeleteMapping("/deleteGames/{gamesId}")
+    public ResponseEntity<Games> deleteGames(@PathVariable String gamesId){
+        Games deleteGames = GamesService.deleteGames(gamesId);
+        return ResponseEntity.ok(deleteGames);
+    }
 
 }
 
