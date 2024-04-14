@@ -269,7 +269,6 @@ public class Controllers {
         return ResponseEntity.ok(deleteFriend);
     }
 
-
     @GetMapping("/getAllHouseHoldThings")
     public List<HouseHoldThings> getAllHouseHoldThingsData(){
         return houseHoldThingsService.getHouseHoldThingsData();
